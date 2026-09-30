@@ -8,23 +8,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Unzip Source Code
-        run: Expand-Archive -Path asphalt_ticket_app.zip -DestinationPath . -Force
-        
-      - name: Move files to root if nested
-        run: |
-          if (Test-Path "asphalt_ticket_app") {
-            Move-Item -Path "asphalt_ticket_app\*" -DestinationPath "." -Force
-          }
+      - name: Create Dynamic Windows Project
+        run: flutter create . --platforms=windows
       
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           
-      - name: Enable Windows Desktop
-        run: flutter config --enable-windows-desktop
-        
       - name: Get Packages
         run: flutter pub get
         
