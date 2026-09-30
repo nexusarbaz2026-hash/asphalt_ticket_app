@@ -1,0 +1,48 @@
+name: asphalt_ticket_app
+description: Asphalt Mix Ticket entry, printing and reporting app for Asphalt One / Nexus Middle East.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # Firebase — all ticket data is stored here, shared instantly across
+  # Windows / Mac / Web / Android builds since they all read the same project.
+  firebase_core: ^3.6.0
+  cloud_firestore: ^5.4.4
+  firebase_auth: ^5.3.1
+
+  # State management
+  provider: ^6.1.2
+
+  # Dates / times
+  intl: ^0.19.0
+
+  # Printing a single ticket + generating report PDFs
+  pdf: ^3.11.1
+  printing: ^5.13.3
+
+  # Excel report generation
+  excel: ^4.0.6
+
+  # Saving report files to local storage
+  path_provider: ^2.1.4
+  share_plus: ^10.0.2
+
+  uuid: ^4.5.1
+  file_saver: ^0.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/header.jpg
