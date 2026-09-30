@@ -1,7 +1,5 @@
 name: Build Windows App
 on:
-  push:
-    branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
@@ -9,6 +7,15 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Unzip Source Code
+        run: Expand-Archive -Path asphalt_ticket_app.zip -DestinationPath . -Force
+        
+      - name: Move files to root if nested
+        run: |
+          if (Test-Path "asphalt_ticket_app") {
+            Move-Item -Path "asphalt_ticket_app\*" -DestinationPath "." -Force
+          }
       
       - name: Install Flutter
         uses: subosito/flutter-action@v2
